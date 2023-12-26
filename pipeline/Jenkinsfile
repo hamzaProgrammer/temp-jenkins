@@ -14,7 +14,7 @@ node {
     }
     stage('building'){
         echo 'building image'
-        sh 'socker build -t hamza78674/pipelinedemo:${BUILD_NUMBER} .'
+        sh 'docker build -t hamza78674/pipelinedemo:${BUILD_NUMBER} .'
     }
     stage('deploy to docker hub'){
         echo 'docker logging in'
