@@ -7,7 +7,7 @@ job('node js project ver 02'){
         }
     }
     wrappers {
-        ndoejs('Node 16')
+        nodejs('Node 16')
         credentialsBinding{
             usernamePassword('hamza78674', 'hamza78674' )
         }
