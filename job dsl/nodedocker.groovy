@@ -1,28 +1,28 @@
-job("node js project ver 2"){
-    description("this project will clone node js proj and build and push it to docker hub")
-     scm {
-        git('https://github.com/mukeshphulwani66/simple-node-proj.git','main') { node -> 
-            node / gitConfigName('mukeshphulwani66')
-            node / gitConfigEmail('mukeshphulwani66@gmail.com')
+job('node js project ver 02'){
+    description('this project will clone node js project from github repo and then build that project and then push code to docker hub repository')
+    scm {
+        git('https://github.com/hamzaProgrammer/temp-jenkins.git', "main") { node -> // is hudson.plugins.git.GitSCM
+            node / gitConfigName('hamzaProgrammer')
+            node / gitConfigEmail('hmaqsood295@gmail.com')
         }
     }
     wrappers {
-          nodejs('node 16')
-          credentialsBinding {
-            usernamePassword('USERNAME_DOC', 'PASS_DOC','dockerhubcred')
+        ndoejs('Node 16')
+        credentialsBinding{
+            usernamePassword('hamza78674', 'hamza78674' )
         }
     }
     steps{
         shell('npm install')
-        shell('docker login -u ${USERNAME_DOC} -p ${PASS_DOC}')
+        shell('docker login -u hamza78674 -p hamza78674')
         dockerBuildAndPublish {
-            repositoryName('mukeshphulwani66/nodejs-jenkins-demo')
+            repositoryName('hamza78674/nodejs-jenkins-demo')
             tag('${BUILD_NUMBER}')
-            registryCredentials('dockerhubcred')
+            //registryCredentials('docker-hub')
             forcePull(false)
             createFingerprints(false)
             skipDecorate()
         }
-         shell('docker logout')
+        shell('docker logout')
     }
 }
