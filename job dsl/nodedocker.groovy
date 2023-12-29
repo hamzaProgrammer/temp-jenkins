@@ -14,7 +14,7 @@ job('node js project ver 02'){
     }
     steps{
         shell('npm install')
-        shell('docker login -u hamza78674 -p hamza_78674')
+        shell('docker login -u hamza78674 -p hamza_78674') 
         dockerBuildAndPublish {
             repositoryName('hamza78674/nodejs-jenkins-demo')
             tag('${BUILD_NUMBER}')
